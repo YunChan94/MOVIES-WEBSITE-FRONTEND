@@ -1,0 +1,40 @@
+.banner {
+  height: 20rem;
+  padding-top: 5%;
+  padding-left: 5%;
+  background-size: cover;
+}
+
+.banner-title {
+  width: 40%;
+}
+
+.banner-title h1 {
+  color: white;
+  font-size: 2rem;
+}
+
+.banner-desc {
+  color: white;
+  height: 10rem;
+}
+
+.banner-btn {
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.banner-btn button {
+  background-color: rgb(80, 76, 86);
+  color: white;
+  border: none;
+  padding: 5% 10%;
+  font-weight: bolder;
+  transition: all 0.5s;
+}
+
+.banner-btn button:hover {
+  transform: scale(1.1);
+  background-color: grey;
+}

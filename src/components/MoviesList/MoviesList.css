@@ -1,0 +1,35 @@
+.moviesList {
+  padding: 3%;
+}
+
+.moviesList h3 {
+  color: white;
+}
+
+.moviesItem {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  gap: 1%;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+}
+
+::-webkit-scrollbar {
+  height: 0.5rem;
+  background-color: rgba(17, 17, 17, 255);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: grey;
+}
+.movie-img {
+  cursor: pointer;
+  transition: all 0.5s;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+.movie-img:hover {
+  transform: scale(1.1);
+}
