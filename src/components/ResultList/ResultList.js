@@ -1,6 +1,5 @@
 import "./ResultList.css";
 import React, { useState, useEffect } from "react";
-import useHttp from "../../hooks/use-http";
 import MovieDetail from "../MovieDetail/MovieDetail";
 const ResultList = (props) => {
   const [movies, setMovies] = useState([]);
@@ -25,19 +24,20 @@ const ResultList = (props) => {
   const movieDeTail = movies.find((movie) => movie.id === movieDetailId);
 
   // Lấy data Trending
-  const { isLoading, error, sendRequest: sendfetch } = useHttp();
+
   useEffect(() => {
-    const receiveData = (data) => {
-      const loadedMovie = data.results;
-      setMovies(loadedMovie);
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ keyword: `${props.query}` }),
     };
-    sendfetch(
-      {
-        url: `/search/movie?api_key=8d889bf8e18531838dd6a6f6a0ba836c&language=en-US&query=${props.query}&page=1`,
-      },
-      receiveData
-    );
-  }, [sendfetch, props.query]);
+    fetch(
+      "http://localhost:5000/api/movies/search?token=RYoOcWM4JW",
+      requestOptions
+    )
+      .then((response) => response.json())
+      .then((data) => setMovies(data.results));
+  }, [props.query]);
 
   // Khi chưa nhập search key
   let content = <p>Let's search!</p>;
@@ -63,15 +63,6 @@ const ResultList = (props) => {
       );
     } else {
       content = <p>Can't found any movies</p>;
-    }
-
-    //   Khi xảy ra lỗi
-    if (error) {
-      content = <p>Something went wrong!</p>;
-    }
-
-    if (isLoading) {
-      content = <p>Loading ...</p>;
     }
   }
 

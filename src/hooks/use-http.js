@@ -9,7 +9,7 @@ const useHttp = () => {
     setError(null);
     try {
       const response = await fetch(
-        `https://api.themoviedb.org/3${requestConfig.url}`,
+        `http://localhost:5000/api/movies${requestConfig.url}`,
         {
           method: "GET",
           headers: {},
