@@ -29,23 +29,30 @@ const ResultList = (props) => {
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ keyword: `${props.query}` }),
+      body: JSON.stringify({
+        keyword: `${props.keyword}`,
+        genre: `${props.genre}`,
+        mediaType: `${props.mediaType}`,
+        lang: `${props.lang}`,
+        year: `${props.year}`,
+      }),
     };
+
     fetch(
       "http://localhost:5000/api/movies/search?token=RYoOcWM4JW",
       requestOptions
     )
       .then((response) => response.json())
       .then((data) => setMovies(data.results));
-  }, [props.query]);
-
+  }, [props.keyword, props.genre, props.mediaType, props.lang, props.year]);
+  console.log(movies);
   // Khi chưa nhập search key
   let content = <p>Let's search!</p>;
 
   // Khi nhập search key
   if (props.query !== "") {
     // Khi tìm có kết quả
-    if (movies) {
+    if (movies.length !== 0) {
       content = (
         <div className="searchItem">
           {movies.map((movie) => (
