@@ -36,6 +36,10 @@ const SearchForm = (props) => {
   //Reset khung input
   const resetInputHandler = () => {
     setSearchKey("");
+    setYear("");
+    setGenre("");
+    setMediaType("");
+    setLang("");
   };
 
   return (
@@ -91,8 +95,8 @@ const SearchForm = (props) => {
         <select className="select" onChange={langChangeHandler}>
           <option value="">Choose Language</option>
           <option value="en">English</option>
-          <option value="jp">Japanese</option>
-          <option value="kr">Korean</option>
+          <option value="ja">Japanese</option>
+          <option value="ko">Korean</option>
         </select>
         <div className="search-button">
           <button onClick={resetInputHandler}>RESET</button>

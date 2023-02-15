@@ -45,12 +45,12 @@ const ResultList = (props) => {
       .then((response) => response.json())
       .then((data) => setMovies(data.results));
   }, [props.keyword, props.genre, props.mediaType, props.lang, props.year]);
-  console.log(movies);
+
   // Khi chưa nhập search key
   let content = <p>Let's search!</p>;
 
   // Khi nhập search key
-  if (props.query !== "") {
+  if (props.keyword !== "") {
     // Khi tìm có kết quả
     if (movies.length !== 0) {
       content = (
